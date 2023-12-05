@@ -1,0 +1,6 @@
+pandas
+plotly
+policyengine_core
+policyengine_uk
+streamlit
+numpy
