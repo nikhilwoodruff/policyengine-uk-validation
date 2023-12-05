@@ -4,7 +4,6 @@ from policyengine_core.charts import format_fig, BLUE, GRAY, DARK_GRAY
 import streamlit as st
 import numpy as np
 from policyengine_uk.system import system
-from policyengine_uk import Microsimulation
 
 st.title("PolicyEngine UK calibration dashboard")
 
@@ -144,31 +143,3 @@ if show_full_table:
     st.write(
         comparison_df.sort_values("Absolute relative error", ascending=False)
     )
-
-sim = Microsimulation(dataset="calibrated_spi_enhanced_pooled_frs_2019_21")
-
-with st.expander("See variable aggregates"):
-    chosen_variable = st.selectbox(
-        "Variable",
-        system.variables.keys(),
-    )
-    aggregates = []
-    for year in range(2023, 2028):
-        aggregates += [sim.calculate(chosen_variable, period=year).sum()]
-
-    fig = px.bar(
-        pd.DataFrame(
-            {
-                "Year": list(range(2023, 2028)),
-                "Aggregate": aggregates,
-            }
-        ),
-        x="Year",
-        y="Aggregate",
-    )
-    fig.update_layout(
-        title=f"Aggregate {chosen_variable} over time",
-        xaxis_title="Year",
-        yaxis_title="Aggregate",
-    )
-    st.write(fig)
