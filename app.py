@@ -3,7 +3,6 @@ import plotly.express as px
 from policyengine_core.charts import format_fig, BLUE, GRAY, DARK_GRAY
 import streamlit as st
 import numpy as np
-from policyengine_uk.system import system
 
 st.title("PolicyEngine UK calibration dashboard")
 
