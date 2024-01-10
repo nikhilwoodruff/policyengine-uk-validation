@@ -8,7 +8,7 @@ st.title("PolicyEngine UK calibration dashboard")
 
 
 training_log_cps = pd.read_csv(
-    "calibration_log_cps.csv.gz", compression="gzip"
+    "calibration_log_50_sample.csv.gz", compression="gzip"
 )
 
 training_log_cps["Source dataset"] = "Enhanced FRS"
